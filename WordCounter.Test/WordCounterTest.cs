@@ -31,7 +31,21 @@ namespace WordCounterTest
         public void Test_MatchMultipleLetters()
         {
             WordCount wordCount = new WordCount();
-            Assert.AreEqual(0, wordCount.CountWords("apple", "apple"));
+            Assert.AreEqual(1, wordCount.CountWords("apple", "apple"));
+        }
+
+        [TestMethod]
+        public void Test_DoesNotMatchPartialWords()
+        {
+            WordCount wordCount = new WordCount();
+            Assert.AreEqual(0, wordCount.CountWords("app", "apple"));
+        }
+
+        [TestMethod]
+        public void Test_TreatWordsAsSeparateSpace()
+        {
+            WordCount wordCount = new WordCount();
+            Assert.AreEqual(2, wordCount.CountWords("apple", "apple juice apple pie"));
         }
     }
 }
