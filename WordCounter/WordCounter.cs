@@ -18,9 +18,9 @@ namespace WordCounter
             {
                 wordsToCheck = wordsToCheck.ToLower();
                 keyWord = keyWord.ToLower();
+                keyWord = _RemoveSpecialCharacters(keyWord);
             }
-
-            keyWord = _RemoveSpecialCharacters(keyWord);
+            
 
             char[] keyArray = keyWord.ToCharArray();
             char[] wordsArray = wordsToCheck.ToCharArray();

@@ -61,5 +61,12 @@ namespace WordCounterTest
             WordCount wordCount = new WordCount();
             Assert.AreEqual(2, wordCount.CountWords("**ple", "apple people ple maple"));
         }
+
+        [TestMethod]
+        public void Test_StrictSpecialCharacters()
+        {
+            WordCount wordCount = new WordCount();
+            Assert.AreEqual(2, wordCount.CountWords("ap*le!", "apple! apple apile!", true));
+        }
     }
 }
