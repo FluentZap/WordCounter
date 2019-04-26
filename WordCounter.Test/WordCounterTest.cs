@@ -74,7 +74,23 @@ namespace WordCounterTest
         {
             WordCount wordCount = new WordCount();
             Assert.AreEqual(2, wordCount.CountWords("apples", "apple's, juice! apples' pie!"));
-        }                                           
+        }
+
+        [TestMethod]
+        public void Test_SpecialCharactersMatchStrict()
+        {
+            WordCount wordCount = new WordCount();
+            Assert.AreEqual(1, wordCount.CountWords("apple's", "apple's, juice! apples' pie!", true));
+        }
+
+
+
+        [TestMethod]
+        public void Test_TreatSpecialCharactersAsWordDeviders()
+        {
+            WordCount wordCount = new WordCount();
+            Assert.AreEqual(2, wordCount.CountWords("apple", "apple,juice.apple!pie!"));
+        }
 
     }
 }
