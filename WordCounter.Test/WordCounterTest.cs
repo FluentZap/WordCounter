@@ -11,7 +11,13 @@ namespace WordCounterTest
         {
             WordCount wordCount = new WordCount();
             Assert.AreEqual(1, wordCount.CountWords("f", "f"));
+        }
 
+        [TestMethod]
+        public void Test__MatchSingleLetterIgnoreCase()
+        {
+            WordCount wordCount = new WordCount();
+            Assert.AreEqual(1, wordCount.CountWords("f", "F"));
         }
     }
 }
