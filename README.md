@@ -28,6 +28,7 @@ int WordCounter.CountWords(string keyWord, string wordsToCheck, bool strict = fa
 |Do not match only part of a word|("app", "apple")|0|
 |Treat words as separate if a space is detected|("apple", "apple juice apple pie")|2|
 |Ignore keyWord special characters|("!apple!", "apple juice apple pie")|2|
+|Special character * can be used as a wild card but it will not return partial words and it will not match with spaces|("**ple", "apple people ple")|1|
 |Ignore keyWord punctuation unless the strict option is set|("apple!", "apple! juice apple pie")|1|
 |Ignore wordsToCheck special characters when evaluating words|("*apple", "apple, juice! apple! pie!")|2|
 |Treat special characters as word dividers |("apple", "apple,juice.apple!pie!")|2|
