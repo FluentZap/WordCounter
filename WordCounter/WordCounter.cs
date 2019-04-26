@@ -13,11 +13,14 @@ namespace WordCounter
         public int CountWords(string keyWord, string wordsToCheck, bool strict = false)
         {
             int count = 0;
+            
             if (!strict)
             {
                 wordsToCheck = wordsToCheck.ToLower();
                 keyWord = keyWord.ToLower();
             }
+
+            keyWord = _RemoveSpecialCharacters(keyWord);
 
             char[] keyArray = keyWord.ToCharArray();
             char[] wordsArray = wordsToCheck.ToCharArray();
@@ -48,5 +51,18 @@ namespace WordCounter
             return count;
         }
 
+
+
+
+       private string _RemoveSpecialCharacters(string phrase)
+       {
+            string output = "";
+            for (int i = 0; i < phrase.Length; i++)
+            {
+                if (_letterList.Contains(phrase[i]))
+                    output += phrase[i];
+            }
+            return output;
+       }
     }
 }
