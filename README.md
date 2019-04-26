@@ -27,9 +27,9 @@ int WordCounter.CountWords(string keyWord, string wordsToCheck, bool strict = fa
 |Match multiple letters and return count|("apple", "apple")|1|
 |Do not match only part of a word|("app", "apple")|0|
 |Treat words as separate if a space is detected|("apple", "apple juice apple pie")|2|
-|Ignore keyWord punctuation|("apple!", "apple juice apple pie")|2|
+|Ignore keyWord special characters|("!apple!", "apple juice apple pie")|2|
 |Ignore keyWord punctuation unless the strict option is set|("apple!", "apple! juice apple pie")|1|
-|Ignore wordsToCheck punctuation when evaluating words|("apple", "apple, juice! apple! pie!")|2|
+|Ignore wordsToCheck special characters when evaluating words|("*apple", "apple, juice! apple! pie!")|2|
 |Treat special characters as word dividers |("apple", "apple,juice.apple!pie!")|2|
 |Do not include hyphenated words|("apple", "apple-juice apple-pie")|0|
 
