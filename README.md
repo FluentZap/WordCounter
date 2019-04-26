@@ -20,7 +20,7 @@ int WordCounter.CountWords(string keyWord, string wordsToCheck, bool strict = fa
 
 ## Program Specifications 
 |Description|Input|Output|
-|-|-|
+|-|-|-|
 |Match a single letter and return count|("f", "f")|1|
 |Ignore case and return count|("f", "F")|1|
 |Become case sensitive if the strict option is set|("f", "F", true)|0|
