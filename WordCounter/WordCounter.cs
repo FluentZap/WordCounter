@@ -28,10 +28,15 @@ namespace WordCounter
             int k = 0;
             int skips = 0;
 
+            string testString = "";
+            int testLetters = 0;
+
             for (int i = 0; i < wordsArray.Length; i++)
             {
-                //Check the first keyWord letter to our index in the word array                
-                if (keyArray[k] == wordsArray[i] || (keyArray[k] == '*' && _letterList.Contains(wordsArray[i])))
+                char letter = wordsArray[i];
+
+                //Check the first keyWord letter to our index in the word array
+                if (keyArray[k] == letter || (keyArray[k] == '*' && _letterList.Contains(letter)))
                 {
                     //Found the letter now check for the seccond
                     k++;
@@ -50,7 +55,7 @@ namespace WordCounter
                 }
                 else
                 {
-                    if (wordsArray[i] == ' ')
+                    if (letter == ' ' || _letterList.Contains(letter))
                     {
                         k = 0;
                         skips = 0;
