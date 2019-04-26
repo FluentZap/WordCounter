@@ -14,10 +14,24 @@ namespace WordCounterTest
         }
 
         [TestMethod]
-        public void Test__MatchSingleLetterIgnoreCase()
+        public void Test_MatchSingleLetterIgnoreCase()
         {
             WordCount wordCount = new WordCount();
             Assert.AreEqual(1, wordCount.CountWords("f", "F"));
+        }
+
+        [TestMethod]
+        public void Test_MatchSingleLetterIgnoreCaseStrict()
+        {
+            WordCount wordCount = new WordCount();
+            Assert.AreEqual(0, wordCount.CountWords("f", "F", true));
+        }
+
+        [TestMethod]
+        public void Test_MatchMultipleLetters()
+        {
+            WordCount wordCount = new WordCount();
+            Assert.AreEqual(0, wordCount.CountWords("apple", "apple"));
         }
     }
 }
