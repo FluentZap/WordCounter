@@ -54,5 +54,12 @@ namespace WordCounterTest
             WordCount wordCount = new WordCount();
             Assert.AreEqual(2, wordCount.CountWords("!apple!", "apple juice apple pie"));
         }
+
+        [TestMethod]
+        public void Test_StarWildCard()
+        {
+            WordCount wordCount = new WordCount();
+            Assert.AreEqual(2, wordCount.CountWords("**ple", "apple people ple maple"));
+        }
     }
 }

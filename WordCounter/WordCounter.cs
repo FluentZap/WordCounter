@@ -29,8 +29,8 @@ namespace WordCounter
 
             for (int i = 0; i < wordsArray.Length; i++)
             {
-                //Check the first keyWord letter to our index in the word array
-                if (keyArray[k] == wordsArray[i])
+                //Check the first keyWord letter to our index in the word array                
+                if (keyArray[k] == wordsArray[i] || (keyArray[k] == '*' && _letterList.Contains(wordsArray[i])))
                 {
                     //Found the letter now check for the seccond
                     k++;
@@ -47,7 +47,6 @@ namespace WordCounter
                 else
                     k = 0; //If we don't find a matching letter reset test char to start of word
             }
-
             return count;
         }
 
@@ -59,7 +58,7 @@ namespace WordCounter
             string output = "";
             for (int i = 0; i < phrase.Length; i++)
             {
-                if (_letterList.Contains(phrase[i]))
+                if (_letterList.Contains(phrase[i]) || phrase[i] == '*')
                     output += phrase[i];
             }
             return output;
