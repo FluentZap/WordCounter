@@ -26,6 +26,7 @@ namespace WordCounter
             char[] wordsArray = wordsToCheck.ToCharArray();
 
             int k = 0;
+            int skips = 0;
 
             for (int i = 0; i < wordsArray.Length; i++)
             {
@@ -37,15 +38,25 @@ namespace WordCounter
                     //Found word now check if it is surronded by spaces or at the start or end of the wordsArray
                     if (k == keyArray.Length)
                     {
-                        if ((i - k < 0 || wordsArray[i - k] == ' ') &&
-                            (i + 1 >= wordsArray.Length || wordsArray[i + 1] == ' '))
+                        k += skips;
+                        if ((i - k < 0 || !_letterList.Contains(wordsArray[i - k])) &&
+                            (i + 1 >= wordsArray.Length || !_letterList.Contains(wordsArray[i + 1])))
                             count++;
                         //Reset count and start again
                         k = 0;
+                        skips = 0;
                     }
                 }
                 else
-                    k = 0; //If we don't find a matching letter reset test char to start of word
+                {
+                    if (wordsArray[i] == ' ')
+                    {
+                        k = 0;
+                        skips = 0;
+                    }
+                    else
+                        skips++;
+                }
             }
             return count;
         }

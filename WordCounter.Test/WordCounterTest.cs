@@ -68,5 +68,13 @@ namespace WordCounterTest
             WordCount wordCount = new WordCount();
             Assert.AreEqual(2, wordCount.CountWords("ap*le!", "apple! apple apile!", true));
         }
+
+        [TestMethod]
+        public void Test_IgnoreWordsToCheckSpecialCharacters()
+        {
+            WordCount wordCount = new WordCount();
+            Assert.AreEqual(2, wordCount.CountWords("apple", "a'pple, juice! !appl'e! pie!"));
+        }                                           
+
     }
 }

@@ -30,9 +30,9 @@ int WordCounter.CountWords(string keyWord, string wordsToCheck, bool strict = fa
 |Ignore keyWord special characters|("!apple!", "apple juice apple pie")|2|
 |Special character '*' can be used as a wild card but it will not return partial words and it will not match with spaces|("**ple", "apple people ple maple")|2|
 |Check for keyWord special characters if the strict option is set, still treat '*' as a wild card|("ap*le!", "apple! apple apile!", true)|2|
-|Ignore wordsToCheck special characters when evaluating words|("*apple", "apple, juice! apple! pie!")|2|
+|Ignore wordsToCheck special characters when evaluating words|("apple", "a'pple, juice! !appl'e! pie!")|2|
 |Treat special characters as word dividers |("apple", "apple,juice.apple!pie!", true)|2|
-|Do not include hyphenated words|("apple", "apple-juice apple-pie")|0|
+|Do not include hyphenated or underscored words|("apple", "apple-juice apple_pie")|0|
 
 
 ## Support
