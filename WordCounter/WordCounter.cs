@@ -37,8 +37,9 @@ namespace WordCounter
                     k++;
                     //Found word now check if it is surronded by spaces or at the start or end of the wordsArray
                     if (k == keyArray.Length)
-                    {
+                    {                        
                         k += skips;
+                        
                         if ((i - k < 0 || !_letterList.Contains(wordsArray[i - k])) &&
                             (i + 1 >= wordsArray.Length || !_letterList.Contains(wordsArray[i + 1])))
                             count++;
