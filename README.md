@@ -26,16 +26,16 @@ int WordCounter.CountWords(string keyWord, string wordsToCheck, bool strict = fa
 |Ignore case and return count|("f", "F")|1|
 |Become case sensitive if the strict option is set|("f", "F", true)|0|
 |Match multiple letters and return count|("apple", "apple")|1|
-|Do not match only part of a word|("app", "apple")|0|
-|Treat words as separate if a space is detected|("apple", "apple juice apple pie")|2|
-|Ignore keyWord special characters|("!apple!", "apple juice apple pie")|2|
-|Special character '*' can be used as a wild card but it will not return partial words and it will not match with spaces|("**ple", "apple people ple maple")|2|
-|Check for keyWord special characters if the strict option is set, still treat '*' as a wild card|("ap*le!", "apple! apple apile!", true)|2|
+|Do not match partial words|("app", "apple")|0|
+|Treat as separate words if a space is detected|("apple", "apple juice apple pie")|2|
+|Ignore special characters in keyWord|("!apple!", "apple juice apple pie")|2|
+|An asterisk '*' can be used to match any letter. It will not return partial words or match with spaces|("**ple", "apple people ple maple")|2|
+|Check for keyWord special characters if the strict option is set. It will still match an asterisk to any letter|("ap*le!", "apple! apple apile!", true)|2|
 |Ignore wordsToCheck special characters when evaluating words|("apples", "apple's, juice! apples' pie!")|2|
-|Special characters must match if option strict is set wordsToCkeck leading and trailing special characters do not count |("apple's", "apple's, juice! apples' pie!", true)|1|
+|Special characters must match if option strict is set, leading and trailing special characters in wordsToCkeck do not count |("apple's", "apple's, juice! apples' pie!", true)|1|
 |Treat special characters as word dividers |("apple", "apple,juice.apple!pie!")|2|
 |Do not include hyphenated or underscored words|("apple", "apple-juice apple_pie")|0|
-
+|If keyWord starts with "^/" it will activate special search parameters ending with "/", "^/S/" is option strict|("^/S/Apple", "Apple bob and his apple")|1|
 
 ## Support
 If there are any issues or errors contact me

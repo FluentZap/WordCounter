@@ -5,15 +5,29 @@ namespace WordCounter
 {
     public class WordCount
     {
-
         private List<char> _letterList = new List<char>()
-        {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+
+        { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
         private List<char> _nonWordEnders = new List<char>()
         {'_', '-'};
 
         public int CountWords(string keyWord, string wordsToCheck, bool strict = false)
         {
+            
+            if (keyWord.Length >= 2 && keyWord.Substring(0, 2) == "^/")
+            {
+                KeyWithParameters keyPar = _GetSearchParameters(keyWord);
+                keyWord = keyPar.keyWord;
+                string options = keyPar.options;
+                for (int i = 0; i < options.Length; i++)
+                {
+                    if (options[i] == 'S') strict = true;
+                }                
+            }
+
+
+
             int count = 0; // the number of words we have matched with
             if (!strict)
             {
@@ -35,9 +49,9 @@ namespace WordCounter
                 // check the first keyWord letter to our index in the word array
                 if (keyArray[k] == letter || (keyArray[k] == '*' && _letterList.Contains(letter)))
                 {
-                    // found the letter now check for the seccond
+                    // found the letter now check for the second
                     k++;
-                    // found word now check if it is surronded by spaces or at the start or end of the wordsArray
+                    // found word now check if it is surrounded by spaces or at the start or end of the wordsArray
                     if (k == keyArray.Length)
                     {                        
                         k += skips;
@@ -70,8 +84,8 @@ namespace WordCounter
             return count;
         }
 
-       private string _RemoveSpecialCharacters(string phrase)
-       {
+        private string _RemoveSpecialCharacters(string phrase)
+        {
             string output = "";
             for (int i = 0; i < phrase.Length; i++)
             {
@@ -79,6 +93,34 @@ namespace WordCounter
                     output += phrase[i];
             }
             return output;
-       }
+        }
+        
+        struct KeyWithParameters
+        {
+            public string keyWord;
+            public string options;
+        }
+
+
+
+        private KeyWithParameters _GetSearchParameters(string word)
+        {
+            string _options = "";
+            string _keyWord = "";
+            word = word.Substring(2);
+
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (word[i] != '/')
+                    _options += word[i];
+                else
+                {
+                    _keyWord = word.Substring(i + 1);
+                    break;
+                }                    
+            }
+            return new KeyWithParameters() { keyWord = _keyWord, options = _options };
+        }
+
     }
 }

@@ -96,5 +96,12 @@ namespace WordCounterTest
             WordCount wordCount = new WordCount();
             Assert.AreEqual(0, wordCount.CountWords("apple", "apple-juice apple_pie"));
         }
+
+        [TestMethod]
+        public void Test_SearchParametersStrict()
+        {
+            WordCount wordCount = new WordCount();
+            Assert.AreEqual(1, wordCount.CountWords("^/S/Apple", "Apple bob and his apple"));
+        }
     }
 }
