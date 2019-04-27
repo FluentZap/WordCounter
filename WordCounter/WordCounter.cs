@@ -11,6 +11,38 @@ namespace WordCounter
 
         private List<char> _nonWordEnders = new List<char>()
         {'_', '-'};
+        
+        struct KeyWithParameters
+        {
+            public string keyWord;
+            public string options;
+        }
+
+        private class _SearchOptions
+        {
+            public bool strict = false;
+            public bool partial = false;
+            public bool array = false;
+        }
+
+        private KeyWithParameters _GetSearchParameters(string word)
+        {
+            string _options = "";
+            string _keyWord = "";
+            word = word.Substring(2);
+
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (word[i] != '/')
+                    _options += word[i];
+                else
+                {
+                    _keyWord = word.Substring(i + 1);
+                    break;
+                }                    
+            }
+            return new KeyWithParameters() { keyWord = _keyWord, options = _options };
+        }
 
         public int CountWords(string keyWord, string wordsToCheck, bool strict = false)
         {
@@ -30,6 +62,9 @@ namespace WordCounter
                         case 'P':
                             so.partial = true;
                             break;
+                        case 'A':
+                            so.array = true;
+                            break;
                     }                    
                 }                
             }
@@ -37,7 +72,24 @@ namespace WordCounter
             if (strict) // backwards compatibility for earlier version with constructor overload
                 so.strict = true;
 
+            int count = 0;
+            if (so.array)
+            {
+                string[] _keyWords = keyWord.Split(null);
+                foreach (string key in _keyWords)
+                {
+                    count += CountSingleWords(key, wordsToCheck, so);
+                }                
+            }
+            else
+            {
+                count += CountSingleWords(keyWord, wordsToCheck, so);
+            }
+            return count;
+        }
 
+        private int CountSingleWords(string keyWord, string wordsToCheck, _SearchOptions so)
+        {
             int count = 0; // the number of words we have matched with
             if (!so.strict)
             {
@@ -45,7 +97,7 @@ namespace WordCounter
                 keyWord = keyWord.ToLower();
                 keyWord = _RemoveSpecialCharacters(keyWord);
             }
-            
+
             char[] keyArray = keyWord.ToCharArray();
             char[] wordsArray = wordsToCheck.ToCharArray();
 
@@ -63,17 +115,28 @@ namespace WordCounter
                     k++;
                     // found word now check if it is surrounded by spaces or at the start or end of the wordsArray
                     if (k == keyArray.Length)
-                    {                        
+                    {
                         k += skips;
-                        
-                        if ((i - k < 0 || // is the start of the word the start of the phrase
+
+                        bool _goodStartOfWord =
+                            i - k < 0 ||   // is the start of the word the start of the phrase
                             !_letterList.Contains(wordsArray[i - k]) || // is the letter before the word not a letter
-                            !_letterList.Contains(wordsArray[i - (k - skips)])) // if it is a letter is there a symbol between them
-                            && 
-                            (i + 1 >= wordsArray.Length || // is the end of the word the end of the phrase
-                                (!_letterList.Contains(wordsArray[i + 1]) // is there a non letter that ends the word
-                                && 
-                                !_nonWordEnders.Contains(wordsArray[i + 1])))) // is the non letter a hyphen or a underscore
+                            !_letterList.Contains(wordsArray[i - (k - skips)]); // if it is a letter is there a symbol between them
+
+
+                        bool _goodEndOfWord =
+                            i + 1 >= wordsArray.Length || // is the end of the word the end of the phrase
+                            (
+                                !_letterList.Contains(wordsArray[i + 1]) && // is there a non letter after the end of the word
+                                !_nonWordEnders.Contains(wordsArray[i + 1]) // is the non letter a hyphen or an underscore 
+                            ) ||
+                            (
+                                _letterList.Contains(wordsArray[i + 1]) && // is the next letter after the end a letter
+                                so.partial //do we accept partials
+                            );
+
+
+                        if (_goodStartOfWord && _goodEndOfWord) // does the word start and end with the correct characters with the correct characters between them
                             count++; // if so we got one!
                         // reset count and start again
                         k = 0;
@@ -105,39 +168,5 @@ namespace WordCounter
             return output;
         }
         
-        struct KeyWithParameters
-        {
-            public string keyWord;
-            public string options;
-        }
-
-        private class _SearchOptions
-        {
-            public bool strict = false;
-            public bool partial = false;
-        }
-
-
-
-
-        private KeyWithParameters _GetSearchParameters(string word)
-        {
-            string _options = "";
-            string _keyWord = "";
-            word = word.Substring(2);
-
-            for (int i = 0; i < word.Length; i++)
-            {
-                if (word[i] != '/')
-                    _options += word[i];
-                else
-                {
-                    _keyWord = word.Substring(i + 1);
-                    break;
-                }                    
-            }
-            return new KeyWithParameters() { keyWord = _keyWord, options = _options };
-        }
-
     }
 }
