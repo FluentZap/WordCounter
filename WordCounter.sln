@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordCounter", "WordCounter\WordCounter.csproj", "{CE0A49C4-8788-41BD-B07E-45C7591BBB69}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordCounterTest", "WordCounter.Test\WordCounterTest.csproj", "{ECDCA8C2-C8AD-4177-817E-05F995B35CDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordCounterTest", "WordCounter.Tests\WordCounterTest.csproj", "{45BF90B0-A947-498B-8225-B3ABF3D4D2E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{CE0A49C4-8788-41BD-B07E-45C7591BBB69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE0A49C4-8788-41BD-B07E-45C7591BBB69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE0A49C4-8788-41BD-B07E-45C7591BBB69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ECDCA8C2-C8AD-4177-817E-05F995B35CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ECDCA8C2-C8AD-4177-817E-05F995B35CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ECDCA8C2-C8AD-4177-817E-05F995B35CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ECDCA8C2-C8AD-4177-817E-05F995B35CDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45BF90B0-A947-498B-8225-B3ABF3D4D2E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45BF90B0-A947-498B-8225-B3ABF3D4D2E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45BF90B0-A947-498B-8225-B3ABF3D4D2E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45BF90B0-A947-498B-8225-B3ABF3D4D2E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

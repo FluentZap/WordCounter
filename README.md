@@ -5,6 +5,7 @@ It searches a sentence or paragraph and returns how often the word is used.
 
 ## Installation
 
+https://github.com/FluentZap/WordCounter
 Clone the repository and compile with a C# compiler.
 It uses .NET Core 2.2
 
