@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace WordCounter
 {
@@ -28,9 +27,6 @@ namespace WordCounter
 
             int k = 0; //current letter in the keyword we are checking to
             int skips = 0; // keeps track of the amount of special characters we skipped
-
-            string testString = "";
-            int testLetters = 0;
 
             for (int i = 0; i < wordsArray.Length; i++)
             {

@@ -5,8 +5,8 @@ It searches a sentence or paragraph and returns how often the word is used.
 
 ## Installation
 
-Clone the repository and compile with a c# compiler.
-It is based on the .NET 2.2 framework
+Clone the repository and compile with a C# compiler.
+It uses .NET Core 2.2
 
 ## Usage
 
@@ -15,7 +15,7 @@ function syntax
 
 int WordCounter.CountWords(string keyWord, string wordsToCheck, bool strict = false);
 // returns count of keyWord in wordsToCheck
-// defaults as case sensitive, can be set to case insensitive with an optional arguement
+// defaults as strict off, can be set to strict with an optional argument
 ```
 
 ## Program Specifications 
@@ -31,7 +31,7 @@ int WordCounter.CountWords(string keyWord, string wordsToCheck, bool strict = fa
 |Special character '*' can be used as a wild card but it will not return partial words and it will not match with spaces|("**ple", "apple people ple maple")|2|
 |Check for keyWord special characters if the strict option is set, still treat '*' as a wild card|("ap*le!", "apple! apple apile!", true)|2|
 |Ignore wordsToCheck special characters when evaluating words|("apples", "apple's, juice! apples' pie!")|2|
-|Special characters must match if option strict is set leading and trailing special characters do not count |("apple's", "apple's, juice! apples' pie!", true)|1|
+|Special characters must match if option strict is set wordsToCkeck leading and trailing special characters do not count |("apple's", "apple's, juice! apples' pie!", true)|1|
 |Treat special characters as word dividers |("apple", "apple,juice.apple!pie!")|2|
 |Do not include hyphenated or underscored words|("apple", "apple-juice apple_pie")|0|
 
