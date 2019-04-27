@@ -14,7 +14,7 @@ namespace WordCounter
 
         public int CountWords(string keyWord, string wordsToCheck, bool strict = false)
         {
-            
+            _SearchOptions so = new _SearchOptions();
             if (keyWord.Length >= 2 && keyWord.Substring(0, 2) == "^/")
             {
                 KeyWithParameters keyPar = _GetSearchParameters(keyWord);
@@ -22,14 +22,24 @@ namespace WordCounter
                 string options = keyPar.options;
                 for (int i = 0; i < options.Length; i++)
                 {
-                    if (options[i] == 'S') strict = true;
+                    switch(options[i])
+                    {
+                        case 'S':
+                            so.strict = true;
+                            break;
+                        case 'P':
+                            so.partial = true;
+                            break;
+                    }                    
                 }                
             }
 
+            if (strict) // backwards compatibility for earlier version with constructor overload
+                so.strict = true;
 
 
             int count = 0; // the number of words we have matched with
-            if (!strict)
+            if (!so.strict)
             {
                 wordsToCheck = wordsToCheck.ToLower();
                 keyWord = keyWord.ToLower();
@@ -100,6 +110,13 @@ namespace WordCounter
             public string keyWord;
             public string options;
         }
+
+        private class _SearchOptions
+        {
+            public bool strict = false;
+            public bool partial = false;
+        }
+
 
 
 
