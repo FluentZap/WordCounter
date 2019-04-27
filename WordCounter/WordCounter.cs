@@ -45,9 +45,12 @@ namespace WordCounter
                     {                        
                         k += skips;
                         
-                        if ((i - k < 0 || !_letterList.Contains(wordsArray[i - k])) &&
-                            (i + 1 >= wordsArray.Length || !_letterList.Contains(wordsArray[i + 1])))
-                            count++;
+                        if ((i - k < 0 || // is the start of the word the start of the phrase
+                            !_letterList.Contains(wordsArray[i - k]) || // is the letter before the word not a letter
+                            !_letterList.Contains(wordsArray[i - (k - skips)])) && // if it is a letter is there a symbol between them
+                            (i + 1 >= wordsArray.Length || // is the end of the word the end of the phrase
+                            !_letterList.Contains(wordsArray[i + 1]))) // is there a non letter that ends the word
+                            count++; // if so we got one!
                         //Reset count and start again
                         k = 0;
                         skips = 0;

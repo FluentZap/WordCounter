@@ -92,5 +92,12 @@ namespace WordCounterTest
             Assert.AreEqual(2, wordCount.CountWords("apple", "apple,juice.apple!pie!"));
         }
 
+        [TestMethod]
+        public void Test_DoNotIncludeHyphenOrUnderscores()
+        {
+            WordCount wordCount = new WordCount();
+            Assert.AreEqual(0, wordCount.CountWords("apple", "apple-juice apple_pie"));
+        }
+
     }
 }
