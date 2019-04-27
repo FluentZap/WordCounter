@@ -4,7 +4,7 @@ using WordCounter;
 namespace WordCounterTest
 {
     [TestClass]
-    public class WordCounterTest
+    public class WordCounterTests
     {
         [TestMethod]
         public void Test_MatchSingleLetter()
