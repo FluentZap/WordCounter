@@ -36,7 +36,7 @@ int WordCounter.CountWords(string keyWord, string wordsToCheck, bool strict = fa
 |Treat special characters as word dividers |("apple", "apple,juice.apple!pie!")|2|
 |Do not include hyphenated or underscored words|("apple", "apple-juice apple_pie")|0|
 |If keyWord starts with "^/" it will activate special search parameters ending with "/", "^/S/" is option strict|("^/S/Apple", "Apple bob and his apple")|1|
-
+|keyWord parameter 'P' will allow partial matches|("^/P/app", "apple app")|2|
 ## Support
 If there are any issues or errors contact me
 

@@ -103,5 +103,12 @@ namespace WordCounterTest
             WordCount wordCount = new WordCount();
             Assert.AreEqual(1, wordCount.CountWords("^/S/Apple", "Apple bob and his apple"));
         }
+
+        [TestMethod]
+        public void Test_SearchParametersPartial()
+        {
+            WordCount wordCount = new WordCount();
+            Assert.AreEqual(2, wordCount.CountWords("^/P/app", "apple app"));
+        }
     }
 }
