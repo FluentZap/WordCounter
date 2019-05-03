@@ -9,114 +9,98 @@ namespace WordCounterTest
         [TestMethod]
         public void Test_MatchSingleLetter()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(1, wordCount.CountWords("f", "f"));
+            Assert.AreEqual(1, WordCount.CountWords("f", "f"));
         }
 
         [TestMethod]
         public void Test_MatchSingleLetterIgnoreCase()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(1, wordCount.CountWords("f", "F"));
+            Assert.AreEqual(1, WordCount.CountWords("f", "F"));
         }
 
         [TestMethod]
         public void Test_MatchSingleLetterIgnoreCaseStrict()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(0, wordCount.CountWords("f", "F", true));
+            Assert.AreEqual(0, WordCount.CountWords("f", "F", true));
         }
 
         [TestMethod]
         public void Test_MatchMultipleLetters()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(1, wordCount.CountWords("apple", "apple"));
+            Assert.AreEqual(1, WordCount.CountWords("apple", "apple"));
         }
 
         [TestMethod]
         public void Test_DoesNotMatchPartialWords()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(0, wordCount.CountWords("app", "apple"));
+            Assert.AreEqual(0, WordCount.CountWords("app", "apple"));
         }
 
         [TestMethod]
         public void Test_TreatWordsAsSeparateSpace()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(2, wordCount.CountWords("apple", "apple juice apple pie"));
+            Assert.AreEqual(2, WordCount.CountWords("apple", "apple juice apple pie"));
         }
 
         [TestMethod]
         public void Test_IgnoreKeyWordSpecialCharacters()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(2, wordCount.CountWords("!apple!", "apple juice apple pie"));
+            Assert.AreEqual(2, WordCount.CountWords("!apple!", "apple juice apple pie"));
         }
 
         [TestMethod]
         public void Test_StarWildCard()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(2, wordCount.CountWords("**ple", "apple people ple maple"));
+            Assert.AreEqual(2, WordCount.CountWords("**ple", "apple people ple maple"));
         }
 
         [TestMethod]
         public void Test_StrictSpecialCharacters()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(2, wordCount.CountWords("ap*le!", "apple! apple apile!", true));
+            Assert.AreEqual(2, WordCount.CountWords("ap*le!", "apple! apple apile!", true));
         }
 
         [TestMethod]
         public void Test_IgnoreWordsToCheckSpecialCharacters()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(2, wordCount.CountWords("apples", "apple's, juice! apples' pie!"));
+            Assert.AreEqual(2, WordCount.CountWords("apples", "apple's, juice! apples' pie!"));
         }
 
         [TestMethod]
         public void Test_SpecialCharactersMatchStrict()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(1, wordCount.CountWords("apple's", "apple's, juice! apples' pie!", true));
+            Assert.AreEqual(1, WordCount.CountWords("apple's", "apple's, juice! apples' pie!", true));
         }
 
         [TestMethod]
         public void Test_TreatSpecialCharactersAsWordDeviders()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(2, wordCount.CountWords("apple", "apple,juice.apple!pie!"));
+            Assert.AreEqual(2, WordCount.CountWords("apple", "apple,juice.apple!pie!"));
         }
 
         [TestMethod]
         public void Test_DoNotIncludeHyphenOrUnderscores()
-        {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(0, wordCount.CountWords("apple", "apple-juice apple_pie"));
+        {            
+            Assert.AreEqual(0, WordCount.CountWords("apple", "apple-juice apple_pie"));
         }
 
         [TestMethod]
         public void Test_SearchParametersStrict()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(1, wordCount.CountWords("^/S/Apple", "Apple bob and his apple"));
+            Assert.AreEqual(1, WordCount.CountWords("^/S/Apple", "Apple bob and his apple"));
         }
 
         [TestMethod]
         public void Test_SearchParametersPartial()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(2, wordCount.CountWords("^/P/app", "apple app"));
+            Assert.AreEqual(2, WordCount.CountWords("^/P/app", "apple app"));
         }
 
         [TestMethod]
         public void Test_SearchParametersArray()
         {
-            WordCount wordCount = new WordCount();
-            Assert.AreEqual(4, wordCount.CountWords("^/A/apple juice", "apple juice from the juice of the apple"));
+            Assert.AreEqual(4, WordCount.CountWords("^/A/apple juice", "apple juice from the juice of the apple"));
         }
-        
+
     }
 }

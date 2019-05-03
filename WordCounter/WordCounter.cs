@@ -5,11 +5,11 @@ namespace WordCounter
 {
     public class WordCount
     {
-        private List<char> _letterList = new List<char>()
+        private static List<char> _letterList = new List<char>()
 
         { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
-        private List<char> _nonWordEnders = new List<char>()
+        private static List<char> _nonWordEnders = new List<char>()
         {'_', '-'};
         
         struct KeyWithParameters
@@ -25,7 +25,7 @@ namespace WordCounter
             public bool array = false;
         }
 
-        private KeyWithParameters _GetSearchParameters(string word)
+        private static KeyWithParameters _GetSearchParameters(string word)
         {
             string _options = "";
             string _keyWord = "";
@@ -44,7 +44,7 @@ namespace WordCounter
             return new KeyWithParameters() { keyWord = _keyWord, options = _options };
         }
 
-        public int CountWords(string keyWord, string wordsToCheck, bool strict = false)
+        public static int CountWords(string keyWord, string wordsToCheck, bool strict = false)
         {
             _SearchOptions so = new _SearchOptions();
             if (keyWord.Length >= 2 && keyWord.Substring(0, 2) == "^/")
@@ -88,7 +88,7 @@ namespace WordCounter
             return count;
         }
 
-        private int CountSingleWords(string keyWord, string wordsToCheck, _SearchOptions so)
+        private static int CountSingleWords(string keyWord, string wordsToCheck, _SearchOptions so)
         {
             int count = 0; // the number of words we have matched with
             if (!so.strict)
@@ -157,7 +157,7 @@ namespace WordCounter
             return count;
         }
 
-        private string _RemoveSpecialCharacters(string phrase)
+        private static string _RemoveSpecialCharacters(string phrase)
         {
             string output = "";
             for (int i = 0; i < phrase.Length; i++)
