@@ -22,3 +22,9 @@ textarea {
   margin-right: auto;
   justify-content: center;
 }
+
+body, html {
+  background-image: url(../img/StarWars.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
