@@ -1,1 +1,18 @@
-﻿
+h1 {
+  text-align: center;
+}
+
+textarea {
+  /* height: 200px; */
+  /* width: 200px; */
+  resize: none;
+}
+
+.form-control {
+  margin: 5px;
+}
+
+
+.keywordInput {
+  width: 25%
+}

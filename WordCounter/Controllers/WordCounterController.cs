@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MVCTemplate.Controllers
 {
-  public class HomeController : Controller
-  {
-    public IActionResult Index()
-    {
-      return View();
-    }
-  }
+	public class WordCounterController: Controller
+	{
+		[HttpGet("/wordcounter")]
+		public IActionResult Index()
+		{
+			return View();
+		}
+	}
 }
