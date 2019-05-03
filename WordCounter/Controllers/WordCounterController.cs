@@ -34,5 +34,12 @@ namespace MVCTemplate.Controllers
 
 			return RedirectToAction("Index");
 		}
+
+		[HttpGet("/wordcounter/{guid}")]
+		public IActionResult Show(string guid)
+		{
+			Guid id = new Guid(guid);
+			return View(WordDatabase.GetWordSearches()[id]);
+		}
 	}
 }
