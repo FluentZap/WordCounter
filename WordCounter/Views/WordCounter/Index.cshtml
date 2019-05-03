@@ -1,27 +1,14 @@
 ﻿@using WordCounter;
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+@{
+	ViewData["Title"] = "Word Count List";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-<head>
-	<meta charset="utf-8">
-	<title></title>
-	<script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
-	<script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-	<script type="text/javascript" src="~/js/script.js"></script>
-	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" href="~/css/styles.css">
-</head>
+@foreach (KeyValuePair<Guid, WordSearch> item in Model)
+{
+	<a href="/wordcounter/@item.Key.ToString()">
+		<p>@item.Key.ToString().Substring(0, 5) -- @item.Value.Keyword , @item.Value.Count</p>
+	</a>
+}
 
-<body>
-	<div class="container">
-		<h1>Word Counter</h1>
-		@foreach (KeyValuePair<Guid, WordSearch> item in Model)
-		{
-		<p>@item.Key.ToString().Substring(0, 5) -- @item.Value.Keyword , @item.Value.Count , @item.Value.WordsToCheck </p>
-		}
-
-		<a href="/wordcounter/new" role="button" class="btn btn-success">New Word Search</a>
-	</div>
-</body>
-
-</html>
+<a href="/wordcounter/new" role="button" class="btn btn-success">New Word Search</a>

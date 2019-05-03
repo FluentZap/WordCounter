@@ -1,22 +1,7 @@
-@using WordCounter;
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+﻿@using WordCounter;
+@{
+	ViewData["Title"] = "Word Count";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-<head>
-	<meta charset="utf-8">
-	<title></title>
-	<script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
-	<script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-	<script type="text/javascript" src="~/js/script.js"></script>
-	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" href="~/css/styles.css">
-</head>
-
-<body>
-	<div class="container">
-		<h1>Hello</h1>
-		<a href="/wordcounter" role="button" class="btn btn-success">Word Counter</a>
-	</div>
-</body>
-
-</html>
+<a href="/wordcounter" role="button" class="btn btn-success">Word Counter</a>

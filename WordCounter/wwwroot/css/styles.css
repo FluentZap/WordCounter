@@ -16,3 +16,9 @@ textarea {
 .keywordInput {
   width: 25%
 }
+
+.btn {
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
