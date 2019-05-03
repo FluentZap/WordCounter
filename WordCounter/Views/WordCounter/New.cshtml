@@ -15,12 +15,15 @@
 <body>
 	<div class="container">
 		<h1>Word Counter</h1>
-		@foreach (KeyValuePair<Guid, WordSearch> item in Model)
-		{
-		<p>@item.Key.ToString().Substring(0, 5) -- @item.Value.Keyword , @item.Value.Count , @item.Value.WordsToCheck </p>
-		}
-
-		<a href="/wordcounter/new" role="button" class="btn btn-success">New Word Search</a>
+		<!-- <a href="/" role="button" class="btn btn-success">Main Page</a> -->
+		<form action="/wordcounter" method="post">
+			<div class="form-group">
+				<input class="form-control keywordInput" type="text" placeholder="Keyword" name="keyword">
+				<textarea class="form-control" placeholder="Searchable Text" name="wordsToCount" rows="8" cols="80"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+		<!-- <a href="/" role="button" class="btn btn-success">Main Page</a> -->
 	</div>
 </body>
 
