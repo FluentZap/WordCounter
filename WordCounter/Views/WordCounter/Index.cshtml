@@ -9,6 +9,6 @@
 @foreach (KeyValuePair<Guid, WordSearch> item in Model)
 {
 	<a href="/wordcounter/@item.Key.ToString()">
-		<p>@item.Key.ToString().Substring(0, 5) -- @item.Value.Keyword , @item.Value.Count</p>
+		<h4>@item.Value.Count instances of : @item.Value.Keyword in @item.Value.WordsToCheck.Length letters</h4>
 	</a>
 }

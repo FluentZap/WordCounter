@@ -7,21 +7,9 @@
 #516249
 #EADEAE */
 
-/* h1 {
-  text-align: center;
-  background-color: #895B34;
-  width: 30rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2rem;
-  font-size: 28px;
-} */
-
-
-
 h1 {
   text-align: center;
-  /* font-size: 36px; */
+  font-size: 6vw;
 }
 
 textarea {
@@ -71,7 +59,6 @@ body, html {
   left: 25%;
   min-width: 200px;
   min-height: 300px;
-  padding: 10%;
 }
 
 nav {
@@ -103,25 +90,4 @@ nav {
 .btn-primary:active, .btn-primary.active {
     background: #007299;
     box-shadow: none;
-}
-
-
-/* width */
-::-webkit-scrollbar {
-  width: 14px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }
