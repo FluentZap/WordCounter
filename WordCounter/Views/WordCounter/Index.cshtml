@@ -17,6 +17,10 @@
 {
 	<h4 class="errorText">Search not added to list - No keyword or text</h4>
 }
+@if (Model["error"] == 4)
+{
+	<h4 class="errorText">Your search could not be found</h4>
+}
 
 @foreach (KeyValuePair<Guid, WordSearch> item in Model["wordSearch"])
 {
