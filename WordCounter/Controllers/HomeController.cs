@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MVCTemplate.Controllers
+namespace WordCounter
 {
   public class HomeController : Controller
   {

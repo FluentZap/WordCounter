@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WordCounter;
 
-namespace MVCTemplate.Controllers
+namespace WordCounter
 {
 	public class WordCounterController: Controller
 	{
@@ -56,7 +56,16 @@ namespace MVCTemplate.Controllers
 		[HttpGet("/wordcounter/{guid}")]
 		public IActionResult Show(string guid)
 		{
-			Guid id = new Guid(guid);
+			Guid id;
+			try
+			{
+				id = new Guid(guid);				
+			}
+			catch (Exception)
+			{
+				return RedirectToAction("Index", new { error = 4 });
+			}
+
 			return View(WordDatabase.GetWordSearches()[id]);
 		}
 	}

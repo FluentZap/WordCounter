@@ -28,7 +28,7 @@ a:hover {
 }
 
 textarea {
-  resize: none;  
+  resize: none;
 }
 
 .form-control {
@@ -44,6 +44,8 @@ textarea {
   margin-right: auto;
   display: block;
   width: 240px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 body, html {
