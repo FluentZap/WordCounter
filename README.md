@@ -7,7 +7,7 @@ It searches a sentence or paragraph and returns how often the word is used.
 
 https://github.com/FluentZap/WordCounter
 Clone the repository and compile with a C# compiler.
-It uses .NET Core 2.2
+It uses .NET Core 2.2 & ASP.NET
 
 ## Usage
 
@@ -38,6 +38,14 @@ int WordCounter.CountWords(string keyWord, string wordsToCheck, bool strict = fa
 |If keyWord starts with "^/" it will activate special search parameters ending with "/", "^/S/" is option strict|("^/S/Apple", "Apple bob and his apple")|1|
 |keyWord parameter 'P' will allow partial matches|("^/P/app", "apple app")|2|
 |keyWord parameter 'A' will allow multiple search words separated by spaces |("^/A/apple juice", "apple juice from the juice of the apple")|4|
+
+## Route Tests
+|Description|Input|Output|
+|-|-|-|
+|Match a single letter and return count|("f", "f")|1|
+|Ignore case and return count|("f", "F")|1|
+|Become case sensitive if the strict option is set|("f", "F", true)|0|
+|Match multiple letters and return count|("apple", "apple")|1|
 ## Support
 If there are any issues or errors contact me
 

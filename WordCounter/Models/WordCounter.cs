@@ -142,7 +142,7 @@ namespace WordCounter
 
 						if (_goodStartOfWord && _goodEndOfWord) // does the word start and end with the correct characters with the correct characters between them
 							count++; // if so we got one!
-											 // reset count and start again
+									 // reset count and start again
 						k = 0;
 						skips = 0;
 					}

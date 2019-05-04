@@ -15,7 +15,7 @@ namespace WordCounterRouteTests
 		{
 			HomeController homeController = new HomeController();
 			IActionResult indexView = homeController.Index();
-			Assert.IsInstanceOfType(indexView, typeof(ViewResult));			
+			Assert.IsInstanceOfType(indexView, typeof(ViewResult));
 		}
 
 		[TestMethod]
@@ -44,7 +44,7 @@ namespace WordCounterRouteTests
 			IActionResult indexView = wordCounterController.New();
 			Assert.IsInstanceOfType(indexView, typeof(ViewResult));
 		}
-		
+
 
 		[TestMethod]
 		public void Controller_Test_WordCounterControllerGetShow()
@@ -69,7 +69,7 @@ namespace WordCounterRouteTests
 		{
 			WordCounterController wordCounterController = new WordCounterController();
 			WordDatabase.AddWordSearch(new WordSearch("apple", "Apple juice is good!"));
-			ViewResult showView = wordCounterController.Show(WordDatabase.GetWordSearches().First().Key.ToString()) as ViewResult;				
+			ViewResult showView = wordCounterController.Show(WordDatabase.GetWordSearches().First().Key.ToString()) as ViewResult;
 			var result = showView.ViewData.Model;
 
 			Assert.IsInstanceOfType(result, typeof(WordSearch));

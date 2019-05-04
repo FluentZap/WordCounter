@@ -7,7 +7,7 @@ namespace WordCounter
 
 	public class WordSearch
 	{
-		public string Keyword {get; set;}
+		public string Keyword { get; set; }
 		public string WordsToCheck { get; set; }
 		public int Count { get; set; }
 
