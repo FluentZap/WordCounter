@@ -11,11 +11,11 @@ namespace WordCounter
 	public class WordCounterController: Controller
 	{
 		[HttpGet("/wordcounter")]
-		public IActionResult Index(int error)
+		public IActionResult Index(int message)
 		{
 			Dictionary<string, object> data = new Dictionary<string, object>();
 			data.Add("wordSearch", WordDatabase.GetWordSearches());
-			data.Add("error", error);
+			data.Add("message", message);
 			return View(data);
 		}		
 
@@ -38,15 +38,15 @@ namespace WordCounter
 			{
 				if (keyword == null && wordsToCount == null)
 				{
-					return RedirectToAction("Index", new { error = 3 });
+					return RedirectToAction("Index", new { message = 3 });
 				}
 				if (wordsToCount == null)
 				{
-					return RedirectToAction("Index", new { error = 2 });
+					return RedirectToAction("Index", new { message = 2 });
 				}
 				if (keyword == null)
 				{
-					return RedirectToAction("Index", new { error = 1 });
+					return RedirectToAction("Index", new { message = 1 });
 				}				
 			}
 
@@ -63,10 +63,18 @@ namespace WordCounter
 			}
 			catch (Exception)
 			{
-				return RedirectToAction("Index", new { error = 4 });
+				return RedirectToAction("Index", new { message = 4 });
 			}
 
 			return View(WordDatabase.GetWordSearches()[id]);
 		}
+
+		[HttpPost("/wordcounter/delete")]
+		public IActionResult Destroy()
+		{			
+			WordDatabase.ClearDatabase();
+			return RedirectToAction("Index", new { message = 5 });
+		}
+
 	}
 }

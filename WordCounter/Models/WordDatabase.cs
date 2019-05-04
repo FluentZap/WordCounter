@@ -34,6 +34,10 @@ namespace WordCounter
 			return _database;
 		}
 
+		public static void ClearDatabase()
+		{
+			_database.Clear();
+		}
 
 	}
 
