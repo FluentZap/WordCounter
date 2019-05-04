@@ -5,8 +5,20 @@
 }
 
 <a href="/wordcounter/new" role="button" class="btn btn-primary">New Word Search</a>
+@if (Model["error"] == 1)
+{
+	<h4 class="errorText">Search not added to list - No keyword</h4>
+}
+@if (Model["error"] == 2)
+{
+	<h4 class="errorText">Search not added to list - No text</h4>
+}
+@if (Model["error"] == 3)
+{
+	<h4 class="errorText">Search not added to list - No keyword or text</h4>
+}
 
-@foreach (KeyValuePair<Guid, WordSearch> item in Model)
+@foreach (KeyValuePair<Guid, WordSearch> item in Model["wordSearch"])
 {
 	<a href="/wordcounter/@item.Key.ToString()">
 		<h4>@item.Value.Count instances of : @item.Value.Keyword in @item.Value.WordsToCheck.Length letters</h4>

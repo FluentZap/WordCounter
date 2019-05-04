@@ -1,39 +1,39 @@
 /* Colors */
-
 /* #282623
 #562A11
 #895B34
 #C7A263
 #516249
 #EADEAE */
-
-/* h1 {
+h1, h4 {
   text-align: center;
-  background-color: #895B34;
-  width: 30rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2rem;
-  font-size: 28px;
-} */
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a {
+  color: #EADEAE;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #895B34;
+}
 
 
-
-h1 {
-  text-align: center;
-  /* font-size: 36px; */
+.errorText {
+  color: #ff6961;
 }
 
 textarea {
-  /* height: 200px; */
-  /* width: 200px; */
-  resize: none;
+  resize: none;  
 }
 
 .form-control {
   margin: 5px;
 }
-
 
 .keywordInput {
   width: 25%
@@ -78,33 +78,31 @@ nav {
   margin-bottom: 20px;
 }
 
-
 .btn {
-    padding: 14px 24px;
-    border: 0 none;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+  padding: 14px 24px;
+  border: 0 none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .btn:focus, .btn:active:focus, .btn.active:focus {
-    outline: 0 none;
+  outline: 0 none;
 }
 
 .btn-primary {
-    background: #0099cc;
-    color: #ffffff;
+  background: #0099cc;
+  color: #ffffff;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
-    background: #33a6cc;
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+  background: #33a6cc;
 }
 
 .btn-primary:active, .btn-primary.active {
-    background: #007299;
-    box-shadow: none;
+  background: #007299;
+  box-shadow: none;
 }
-
 
 /* width */
 ::-webkit-scrollbar {
